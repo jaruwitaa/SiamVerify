@@ -10,15 +10,10 @@ public class VerifyCommand implements CommandExecutor {
     private final String apiUrl;
     private final boolean blockBedrock;
     private final HttpClient http = HttpClient.newHttpClient();
-    
+
     public VerifyCommand(String apiUrl, boolean blockBedrock) {
         this.apiUrl = apiUrl;
         this.blockBedrock = blockBedrock;
-    }
-
-    if (blockBedrock && player.getUniqueId().toString().startsWith("00000000-0000-0000-")) {
-        player.sendMessage("§c❌ ผู้เล่น Bedrock ไม่สามารถเชื่อมบัญชีได้");
-        return true;
     }
 
     @Override
@@ -30,6 +25,12 @@ public class VerifyCommand implements CommandExecutor {
 
         if (args.length == 0) {
             player.sendMessage("§cUsage: /verify <code>");
+            return true;
+        }
+
+        // Block Bedrock players if configured
+        if (blockBedrock && player.getUniqueId().toString().startsWith("00000000-0000-0000-")) {
+            player.sendMessage("§c❌ ผู้เล่น Bedrock ไม่สามารถเชื่อมบัญชีได้");
             return true;
         }
 
