@@ -1,0 +1,8 @@
+name: SiamVerify
+version: 1.0
+main: com.siamverify.SiamVerify
+api-version: 1.21
+commands:
+  verify:
+    description: Link your Minecraft account to Discord
+    usage: /verify <code>
