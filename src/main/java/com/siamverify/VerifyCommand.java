@@ -8,10 +8,12 @@ import java.nio.charset.StandardCharsets;
 
 public class VerifyCommand implements CommandExecutor {
     private final String apiUrl;
+    private final boolean blockBedrock;
     private final HttpClient http = HttpClient.newHttpClient();
-
-    public VerifyCommand(String apiUrl) {
+    
+    public VerifyCommand(String apiUrl, boolean blockBedrock) {
         this.apiUrl = apiUrl;
+        this.blockBedrock = blockBedrock;
     }
 
     @Override
