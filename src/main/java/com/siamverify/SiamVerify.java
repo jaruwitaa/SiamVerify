@@ -9,7 +9,8 @@ public class SiamVerify extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         apiUrl = getConfig().getString("api-url", "http://localhost:50004");
-        getCommand("verify").setExecutor(new VerifyCommand(apiUrl));
+        boolean blockBedrock = getConfig().getBoolean("block-bedrock", true);
+        getCommand("verify").setExecutor(new VerifyCommand(apiUrl, blockBedrock));
         getLogger().info("SiamVerify enabled!");
     }
 }
