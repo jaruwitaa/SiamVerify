@@ -16,6 +16,11 @@ public class VerifyCommand implements CommandExecutor {
         this.blockBedrock = blockBedrock;
     }
 
+    if (blockBedrock && player.getUniqueId().toString().startsWith("00000000-0000-0000-")) {
+        player.sendMessage("§c❌ ผู้เล่น Bedrock ไม่สามารถเชื่อมบัญชีได้");
+        return true;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player player)) {
